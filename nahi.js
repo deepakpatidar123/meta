@@ -1,73 +1,101 @@
-QUESTION 1
+use of this
 
-ANS:-- console.log('a')-- a (because function log directly store a as a string)
-
-            console.log('b')-- b (because function log directly store a as a string)
-
-         console.log("c")-- output is c after 1 sec or 1000milisec as it use function setTimeout.
-
-             console.log('d')-- d (because function log directly store a as a string)    
+this.garage = {
 
 
 
-QUESTION 2
-
-ANS:-- console.log('a')-- a (because function log directly store a as a string)
-
-            console.log('b')-- b (because function log directly store a as a string)
-
-         console.log("c")-- output is c after 1 sec or 1000milisec as it use function setTimeout.
-
-   console.log("d")-- output is d just after code run  as it use function setTimeout with 0 which has no value.
-
-             console.log('d')-- d (because function log directly store a as a stirng)    
+ table: "gae table",
 
 
 
-QUESTION 3
+ cleanTable(){
 
-ANS:--
+  console.log(`cleaning ${this.table}`)
 
-1 - BLOCK SCOPE VARIABLE (let and const) they prevent us from issues related with javascript hoisting as they are not stored in global space.
+ }
 
-2 - STRING INTERPOLATION -( ` , ${ }`) it helps us in knowing what the output is going to be.
+}
 
-3-ARROW FUNCTION -[()=>{} ] it help in avoiding with the issues related with "this" key word.
-
-4- SPRED OPERATOR -we can merge two array using it.
-
-5- DESTRUCTORING -we can get any value inside an object or an array using it.
-
-6- OBJECT.ASSIGN()- helps us in creating the shallow close if any object or merging many object into one.
-
-7-MULTI LINE STRING - we can create multi line string using back ticks.
-
-8- PROMISES-  we can use promise with the arrow function.
-
-9-CLASSES- make simpler to create object , function and we can use inheritance also .
-
-10-MODULES- we can use the "import" or "export" statement in a module to import or export variables, functions, classes or any other component from/to different files and modules.
+//console.log(this.garage.table);
 
 
 
-QUESTION 4
+let room ={
 
-ANS:-Arrow functions don't have their own bindings to this,arguments, or super , and should not be used as methods and cannot be used as constructor. Calling them with new throws a error. They also don't have access to the new taeget keyword.
+ table: 'abc',
+
+ cleanTable(){
+
+  console.log(`cleaning ${this.table}`)
+
+ }
+
+}
+
+console.log(room.table);
+
+room.cleanTable();
+
+this.garage.cleanTable()
 
 
 
-const name = [
+FAT ARROW FUNCTION
 
-    'Kanhaiya',
+class Student {
 
-    'Rakesh',
+  static count =0;
 
-    'Deepak',
+  constructor(name,age,phonenumber,boardMarks) {
 
-    'Lokesh'
+    this.name=name;
 
-  ];
+    this.age=age;
+
+    this.phonenumber=phonenumber;
+
+    this.boardMarks=boardMarks;
+
+    Student.count++;
+
+  }
 
   
 
-  console.log(name.map(name => name.length));
+ EligibiltyForPlacement  = (boardMarks) => {
+
+  let result = this.boardMarks>40 ? this.name+' is eligible for placement':this.name+' is not eligible for placement';
+
+  console.log(result)
+
+  }
+
+
+
+} ;
+
+let obj1= new Student('Rakesh', 17, 3488273, 91);
+
+let obj2= new Student('Lokesh', 16, 3488273, 90);
+
+let obj3= new Student('Depesh', 18, 3488273, 76);
+
+let obj4= new Student('Mahesh', 27, 3488273, 31);
+
+let obj5= new Student('Somesh', 19, 3488273, 40);
+
+
+
+//obj5.EligiblityOfStudents()
+
+//obj5.NoOfStudents()
+
+obj1.EligibiltyForPlacement();
+
+obj2.EligibiltyForPlacement();
+
+obj3.EligibiltyForPlacement();
+
+obj4.EligibiltyForPlacement();
+
+obj5.EligibiltyForPlacement();
