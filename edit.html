@@ -26,13 +26,14 @@
                     phonenumber
                 }
 
-                axios.post("https://crudcrud.com/api/04b6521ac4d8410e96430371c0e03b04/https://crudcrud.com/api/appointmentData")
-                showNewUserOnScreen(respone.data)
-                .then((respone) => {
-                    console.log(respone)
+                axios.post("https://crudcrud.com/api/04b6521ac4d8410e96430371c0e03b04/appointmentData",obj)
+                //showNewUserOnScreen(response.data)
+                .then((response) => {
+                    showNewUserOnScreen(response.data)
+                    console.log(response)
                 })
                 .catch((err) => {
-                    document.body.innerHTML = document.body.innerHTML + "<h4> Something went wrong </h4>"
+                  //  document.body.innerHTML = document.body.innerHTML + "<h4> Something went wrong </h4>"
                     console.log(err)
                 })
                // localStorage.setItem(obj.email, JSON.stringify(obj))
@@ -40,15 +41,23 @@
             }
 
             window.addEventListener("DOMContentLoaded", () => {
-                const localStorageObj = localStorage;
-                const localstoragekeys  = Object.keys(localStorageObj)
+               axios.get("https://crudcrud.com/api/04b6521ac4d8410e96430371c0e03b04/appointmentData")
+                .then((response) => {
+                   console.log(response)
+                })
+                .catch((error) => {
+                   console.log(error)
+                })
+            //    const localStorageObj = localStorage;
+            //    const localstoragekeys  = Object.keys(localStorageObj)
 
-                for(var i =0; i< localstoragekeys.length; i++){
-                    const key = localstoragekeys[i]
-                    const userDetailsString = localStorageObj[key];
-                    const userDetailsObj = JSON.parse(userDetailsString);
-                    showNewUserOnScreen(userDetailsObj)
-                }
+               // for(var i =0; i< localstoragekeys.length; i++){
+                   // const key = localstoragekeys[i]
+                    
+                    //const userDetailsString = localStorageObj[key];
+                   // const userDetailsObj = JSON.parse(userDetailsString);
+                 //   showNewUserOnScreen(userDetailsObj)
+                //}
             })
 
             function showNewUserOnScreen(user){
