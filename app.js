@@ -1,44 +1,15 @@
-const http = require("http")
+const express = require('express');
 
-const routes = require('./routes');
+const app = express();
 
-console.log(routes.someText);
+app.use((req, res, next)=>{
+    console.log('In the middleware!');
+    next();
+});
 
-const server = http.createServer(routes.handler);
+app.use((req, res, next)=>{
+    console.log('In another middleware!');
+    res.send('<h1>Hello from Express!</h1>');
+});
 
-server.listen(5000);
-
-// const http=require("http")
-// const fs=require("fs")
-
-// const server=http.createServer((request, response)=>{
-//     if(request.url==="/"){
-//         response.end("HOME PAGE")
-//     }else if(request.url==="/data"){
-//      fs.readFile("./data.json",(err,data)=>{
-//         if(err){
-//             response.write(err)
-//             response.end()
-//         } else{
-//             response.end(data)
-//         }
-//      })
-     
-//     }else if(request.url==="/reports"){
-//         response.setHeader("Content-type", "text/html")
-//         response.end("<h2>Reports</h2>")
-    
-//     }else{
-//         response.end("Invalid End Point")
-//     }
-// })
-
-
-// server.listen(4500,()=>{
-//     console.log("The server is run at port 4500")
-// })
-    
-    
-    
-
-
+app.listen(3000);
